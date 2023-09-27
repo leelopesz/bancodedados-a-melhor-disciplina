@@ -130,3 +130,5 @@ begin
     inner join Autor on Autor_Livro.Autor_ID = Autor.Autor_ID;
 end //
 delimiter ;
+
+-- Fim da lista!!
