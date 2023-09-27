@@ -66,3 +66,32 @@ end //
 delimiter ;
 
 -- Exercício 7
+
+delimiter //
+create procedure sp_AdicionarLivro(
+    in titulo_livro varchar(500),
+    in editora_id int,
+    in ano_publicacao int,
+    in numero_paginas int,
+    in categoria_id int,
+    out resultado varchar(255)
+)
+begin
+    declare livro_existente int;
+
+    select count(*) into livro_existente
+    from Livro
+    where Titulo = titulo_livro;
+
+    if livro_existente > 0 then
+        set resultado = 'Título já existe na tabela.';
+    else
+        insert into Livro (Titulo, Editora_ID, Ano_Publicacao, Numero_Paginas, Categoria_ID)
+        values (titulo_livro, editora_id, ano_publicacao, numero_paginas, categoria_id);
+        
+        set resultado = 'Livro adicionado.';
+    end if;
+end //
+delimiter ;
+
+-- Exercício 8
