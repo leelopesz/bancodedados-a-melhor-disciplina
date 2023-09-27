@@ -2,15 +2,17 @@
 
 delimiter //
     create procedure sp_ListarAutores()
+    begin
      select * from autor;
-	//
+    end//
+delimiter;
 
 -- Exercício 2
 		
 delimiter //
   create procedure sp_LivrosPorCategoria(in nome_categoria varchar(200))
     begin
-	select Livro.Titulo, Autor.Nome, Autor.Sobrenome from Livro
+	select Titulo, Autor.Nome, Autor.Sobrenome from Livro
 	inner join Categoria on Livro.Categoria_ID = Categoria.Categoria_ID
 	inner join Autor_Livro on Livro_Livro_ID = Autor_Livro.Livro_ID
 	inner join Autor on Autor_Livro.Autor_Id = Autor.Autor_ID;
@@ -49,7 +51,7 @@ delimiter ;
 delimiter //
 create procedure sp_LivrosAteAno(in ano_limite int)
 begin
-    select Livro.Titulo, Livro.Ano_Publicacao from Livro
+    select Titulo, Ano_Publicacao from Livro
     where Livro.Ano_Publicacao <= ano_limite;
 end //
 delimiter ;
@@ -59,7 +61,7 @@ delimiter ;
 delimiter //
 create procedure sp_TitulosPorCategoria(in categoria_nome varchar(200))
 begin
-    select Livro.Titulo from Livro
+    select Titulo from Livro
     inner join Categoria on Livro.Categoria_ID = Categoria.Categoria_ID
     where Categoria.Nome = categoria_nome;
 end //
@@ -107,5 +109,15 @@ end //
 delimiter ;
 
 -- Exercício 9
+
+-- Escolhi a procedure de número 6
+delimiter // --delimitar
+create procedure sp_TitulosPorCategoria(in categoria_nome varchar(200)) -- criar a procedure com um parametro "categoria_nome"
+begin -- inicio do bloco da procedure
+    select Titulo from Livro -- selecionar titulo dos livros da tabela livros
+    inner join Categoria on Livro.Categoria_ID = Categoria.Categoria_ID -- junção das tabelas, livro à categoria
+    where Categoria.Nome = categoria_nome; -- filtra resultados, selecionando titulos de tabelas da categoria escolhida
+end //
+delimiter ;
 
 -- Exercício 10
