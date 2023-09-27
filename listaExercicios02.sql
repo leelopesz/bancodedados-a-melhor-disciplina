@@ -121,3 +121,12 @@ end //
 delimiter ;
 
 -- Exercício 10
+
+delimiter //
+create procedure sp_LivrosESeusAutores()
+begin
+    select Titulo, Autor.Nome, Autor.Sobrenome from Livro
+    inner join Autor_Livro on Livro.Livro_ID = Autor_Livro.Livro_ID
+    inner join Autor on Autor_Livro.Autor_ID = Autor.Autor_ID;
+end //
+delimiter ;
