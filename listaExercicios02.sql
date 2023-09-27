@@ -27,3 +27,20 @@ begin
     where Categoria.Nome = categoria_nome;
 end //
 delimiter ;
+
+-- Exercício 4
+delimiter //
+create procedure sp_VerificarLivrosCategoria(in categoria_nome varchar(200), out categoria_tem_livros )
+begin
+    declare total_livros int;
+    
+    select count(*) into total_livros
+    from Livro
+    inner join Categoria on Livro.Categoria_ID = Categoria.Categoria_ID
+    where Categoria.Nome = categoria_nome;
+    
+end //
+delimiter ;
+
+-- Exercício 5
+
