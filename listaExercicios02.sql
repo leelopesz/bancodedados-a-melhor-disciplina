@@ -18,6 +18,7 @@ delimiter //
     delimiter;
 
 -- Exercício 3
+
 delimiter //
 create procedure sp_ContarLivrosPorCategoria(in categoria_nome varchar(200), out total_livros int)
 begin
@@ -29,6 +30,7 @@ end //
 delimiter ;
 
 -- Exercício 4
+
 delimiter //
 create procedure sp_VerificarLivrosCategoria(in categoria_nome varchar(200), out categoria_tem_livros )
 begin
@@ -44,3 +46,12 @@ delimiter ;
 
 -- Exercício 5
 
+delimiter //
+create procedure sp_LivrosAteAno(in ano_limite int)
+begin
+    select Livro.Titulo, Livro.Ano_Publicacao from Livro
+    where Livro.Ano_Publicacao <= ano_limite;
+end //
+delimiter ;
+
+-- Exercício 6
