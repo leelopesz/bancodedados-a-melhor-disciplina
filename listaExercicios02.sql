@@ -16,3 +16,14 @@ delimiter //
 	inner join Autor on Autor_Livro.Autor_Id = Autor.Autor_ID;
 	end//
     delimiter;
+
+-- Exercício 3
+delimiter //
+create procedure sp_ContarLivrosPorCategoria(in categoria_nome varchar(200), out total_livros int)
+begin
+    select count(*) into total_livros
+    from Livro
+    inner join Categoria on Livro.Categoria_ID = Categoria.Categoria_ID
+    where Categoria.Nome = categoria_nome;
+end //
+delimiter ;
