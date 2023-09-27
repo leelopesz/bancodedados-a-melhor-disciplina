@@ -95,3 +95,17 @@ end //
 delimiter ;
 
 -- Exercício 8
+
+delimiter //
+create procedure sp_AutorMaisAntigo(out nome_autor varchar(200))
+begin
+    select Nome, Sobrenome into nome_autor from Autor
+    where Data_Nascimento = (
+        select min(Data_Nascimento) from Autor
+    );
+end //
+delimiter ;
+
+-- Exercício 9
+
+-- Exercício 10
